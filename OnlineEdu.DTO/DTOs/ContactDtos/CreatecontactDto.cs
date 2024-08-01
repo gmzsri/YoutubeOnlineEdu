@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineEdu.DTO.DTOs.ContactDtos
 {
-    public class CreatecontactDto
+    public class CreateContactDto
     {
         
         public string MapUrl { get; set; }
