@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace OnlineEdu.DataAccess.Repositories
 {
-    public class GenericRepository<T>(OnlineEduContext _context) : IRepository<T> where T : class
+    public class GenericRepository<T>(OnlineEduContext Context) : IRepository<T> where T : class
     {
-        public DbSet<T> Table { get => _context.Set<T>(); }
+        public DbSet<T> Table { get => Context.Set<T>(); }
         public int Count()
         {
             return Table.Count();
@@ -21,7 +21,7 @@ namespace OnlineEdu.DataAccess.Repositories
         public void Create(T entity)
         {
             Table.Add(entity);
-            _context.SaveChanges();
+            Context.SaveChanges();
                 
         }
 
@@ -29,7 +29,7 @@ namespace OnlineEdu.DataAccess.Repositories
         {
            var entity = Table.Find(id);
             Table.Remove(entity);
-            _context.SaveChanges();
+            Context.SaveChanges();
         }
 
         public int FilteredCount(Expression<Func<T, bool>> predicate)
@@ -60,7 +60,7 @@ namespace OnlineEdu.DataAccess.Repositories
         public void Update(T entity)
         {
             Table.Update(entity);
-            _context.SaveChanges();
+            Context.SaveChanges();
         }
     }
 }
